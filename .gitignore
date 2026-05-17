@@ -1,0 +1,54 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Private chat/session/history artifacts
+history_chat*.md
+history_chunks/
+logs/
+*.log
+.vscode/
+workspaceStorage/
+chat-session-resources/
+
+# Native build outputs
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+runtime_package/private_runner_shim/smoke_ggml_tq_tensor_shim
+runtime_package/private_runner_shim/smoke_ggml_tq_loader_adapter
+
+# Model and tensor artifacts: publish separately by URI/hash.
+*.gguf
+*.ggml
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+*.pkl
+*.ckpt
+*.f32
+catalog_artifacts/
+results/
+artifacts/
+
+# Generated raw inputs in runtime_package are intentionally tracked.
+!runtime_package/generated_inputs/*.raw

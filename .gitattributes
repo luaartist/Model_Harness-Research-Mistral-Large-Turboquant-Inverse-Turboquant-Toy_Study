@@ -1,0 +1,2 @@
+*.raw binary
+*.opencl linguist-language=C

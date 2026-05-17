@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "package": "mistral_large_tq_runtime_bridge_v0",
+  "purpose": "validated q4 TurboQuant shardlet runtime package",
+  "created_by_experiment": "0021_bridge_turboquant_inverse_probe",
+  "artifact": {
+    "path": "artifacts/prior_shootout_q4_shardlet.safetensors",
+    "bytes": 1051216,
+    "sha256": "65a80313464377cc49965984871aa70c511c08f724d7fa89c50aca7814357092"
+  },
+  "prefix": "c0.q4.flavor_best",
+  "kernel": {
+    "path": "runtime_package/turboquant_inverse_q4.opencl",
+    "function": "turboquant_inverse_q4",
+    "language": "OpenCL C",
+    "bytes": 1358,
+    "sha256": "0b501cc330b45ced94ba5207aec89b16714149c31d7628c73b5348b9b83fa095"
+  },
+  "runtime": {
+    "bridge_url": "http://127.0.0.1:8504",
+    "backend": "HIP_Bridge_v1_OpenCL_rusticl",
+    "device": "gfx942:sramecc+:xnack-",
+    "compute_units": 304,
+    "vram_total_gb": 205.8
+  },
+  "vector_dim": 128,
+  "key_bits": 4,
+  "mse_bits": 3,
+  "qjl_scale": 0.009791516697777345,
+  "seeds": {
+    "turboquant_seed": 42,
+    "qjl_seed": 1042
+  },
+  "tensors": {
+    "mse_indices": {
+      "name": "c0.q4.flavor_best.mse_indices",
+      "shape": [
+        256,
+        64
+      ],
+      "dtype": "uint8",
+      "bytes": 16384,
+      "sha256": "1824ef7842da19d99e28e4b9ecc2b9c64703d507725e27fcc507305dd5f1d2e6"
+    },
+    "qjl_signs": {
+      "name": "c0.q4.flavor_best.qjl_signs",
+      "shape": [
+        256,
+        16
+      ],
+      "dtype": "uint8",
+      "bytes": 4096,
+      "sha256": "5c370c9ef3d94a1a98ae0876d7cd225ae83c1989f80f918a566fb5dcbc153a30"
+    },
+    "norms": {
+      "name": "c0.q4.flavor_best.norms",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "bytes": 1024,
+      "sha256": "9221b023740d112db56e84f6fffdea2e5a61b927607a5c41600115532b891952"
+    },
+    "residual_norms": {
+      "name": "c0.q4.flavor_best.residual_norms",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "bytes": 1024,
+      "sha256": "1b97ca9ea3fe33a3835463261b9fbaf56e5297051d17a66595dfbd7420d27b8f"
+    },
+    "pi": {
+      "name": "c0.q4.flavor_best.pi",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "bytes": 65536,
+      "sha256": "fbf80d2414f02a576157356e7956ec8c9f219e7f8705eb221ebb9f30fbb65a5c"
+    }
+  },
+  "loader_conversions": {
+    "mse_indices": "uint8 passthrough",
+    "qjl_signs": "uint8 passthrough",
+    "norms": "cast to float32 before upload",
+    "residual_norms": "cast to float32 before upload",
+    "pi": "cast to float32 before upload"
+  },
+  "generated_inputs": {
+    "centroids": {
+      "name": "lloyd_max_centroids",
+      "path": "runtime_package/generated_inputs/centroids_d128_b3.raw",
+      "shape": [
+        8
+      ],
+      "dtype": "float32",
+      "bytes": 32,
+      "sha256": "67b1b9c205700b78b4bd2683ae7aae8b22498f6c3977c1e00506bc3ecef6aff6"
+    },
+    "qjl_matrix": {
+      "name": "qjl_matrix_s",
+      "path": "runtime_package/generated_inputs/qjl_matrix_d128_seed1042.raw",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "bytes": 65536,
+      "sha256": "3b24cd980837306d050371917000143d9db8d2bb1c149ccbbaa3886c9ae01c1d"
+    }
+  },
+  "byte_accounting": {
+    "stored_tensor_bytes": 88064,
+    "generated_matrix_bytes": 65568,
+    "kernel_bytes": 1358,
+    "decoded_output_bytes": 131072
+  },
+  "validation": {
+    "result_path": "audits/bridge_turboquant_inverse_probe.json",
+    "max_abs_diff": 2.60770320892334e-08,
+    "mean_abs_diff": 1.7736779822641324e-09,
+    "rms_diff": 2.52964049707316e-09,
+    "allclose_1e_4": true,
+    "allclose_1e_5": true
+  },
+  "runner_contract": {
+    "load": [
+      "Open safetensors artifact",
+      "Select tensors by prefix",
+      "Generate centroids from vector_dim and mse_bits",
+      "Generate qjl_matrix from qjl_seed",
+      "Compile kernel function turboquant_inverse_q4"
+    ],
+    "inputs": [
+      "mse_indices uint8 [rows, vector_dim / 2]",
+      "qjl_signs uint8 [rows, vector_dim / 8]",
+      "norms float32 [rows]",
+      "residual_norms float32 [rows]",
+      "pi float32 [vector_dim, vector_dim]",
+      "centroids float32 [2 ** mse_bits]",
+      "qjl_matrix float32 [vector_dim, vector_dim]"
+    ],
+    "output": "float32 [rows, vector_dim] decoded vectors",
+    "status": "validated shardlet package, not full-model inference"
+  },
+  "next_runtime_target": "ggml-opencl sidecar backend",
+  "claim_boundary": "This proves package decode correctness for one real q4 shardlet. It does not yet prove full Mistral inference, native GGML loading, or compression superiority over market baselines."
+}

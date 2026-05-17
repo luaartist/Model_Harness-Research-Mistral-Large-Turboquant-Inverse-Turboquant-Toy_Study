@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "profile_kind": "quantized_model_factory_profile",
+  "model": {
+    "model_id": "mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "architecture": "mistral-large-moe",
+    "dim": 7168,
+    "head_dim": 192,
+    "hidden_dim": 16384,
+    "n_layers": 61,
+    "n_heads": 128,
+    "n_kv_heads": 128,
+    "expert_count": 128,
+    "experts_per_token": 4
+  },
+  "factory_inputs": {
+    "source_shard_count": 272,
+    "source_shards_path": "$MODEL_DIR",
+    "calibration_policy": "streamed slices only; never load full model",
+    "controls_required": [
+      "direct_quantization",
+      "random_prior",
+      "default_turboquant",
+      "held_out_windows"
+    ]
+  },
+  "quantization_recipe": {
+    "family": "turboquant_qjl_mse",
+    "key_bits": 4,
+    "mse_bits": 3,
+    "vector_dim": 128,
+    "seeds": {
+      "turboquant_seed": 42,
+      "qjl_seed": 1042
+    },
+    "generated_inputs": [
+      "lloyd_max_centroids",
+      "qjl_matrix"
+    ]
+  },
+  "runner_outputs": {
+    "artifact_mode": "external_hash_pinned_artifact",
+    "package_manifest": "runtime_package_manifest.json",
+    "decode_kernel": "turboquant_inverse_q4.opencl",
+    "tensor_descriptor": "ggml_tensor_buffer_shim.json",
+    "framework_audit": "python_runner_framework_audit.json"
+  },
+  "promotion_gates": [
+    "artifact_sha256_matches",
+    "kernel_sha256_matches",
+    "generated_inputs_sha256_match",
+    "torch_reference_allclose_1e_5",
+    "bridge_decode_sha256_matches",
+    "native_tensor_descriptor_matches",
+    "memory_clean_after_decode"
+  ],
+  "future_rust_shape": {
+    "crate_name": "tq_runner",
+    "traits": [
+      "DecodeBackend",
+      "ArtifactStore",
+      "TensorSink"
+    ],
+    "backend_sequence": [
+      "decoded_f32_file",
+      "http_bridge",
+      "inprocess_opencl"
+    ]
+  },
+  "claim_boundary": "Factory profile template only. A model profile becomes runnable only after every referenced artifact, metric, hash, and audit exists."
+}

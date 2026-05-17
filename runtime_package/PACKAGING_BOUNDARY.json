@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "boundary": "factory-builds-runner-verifies-and-decodes",
+  "current_status": "validated single-shardlet runtime package",
+  "runner_package_includes": [
+    "runtime_package_manifest.json",
+    "turboquant_inverse_q4.opencl",
+    "VERSION",
+    "Makefile",
+    "release_lock.py",
+    "RELEASE_NOTES.md",
+    "RELEASE_LOCK.v0.3-ggml-loader-surface.json",
+    "validate_runtime_package.py",
+    "ggml_opencl_sidecar.py",
+    "ggml_tensor_buffer_shim.py",
+    "runner_framework.py",
+    "private_runner_shim/",
+    "PACKAGING_BOUNDARY.json",
+    "MODEL_PROFILE_TEMPLATE.json",
+    "RUNNER_README.md",
+    "generated_inputs/"
+  ],
+  "artifact_delivery_modes": {
+    "current": "external_hash_pinned_artifact",
+    "supported_future_modes": [
+      "embedded_artifact",
+      "external_artifact",
+      "registry_artifact"
+    ]
+  },
+  "current_artifact": {
+    "path": "artifacts/prior_shootout_q4_shardlet.safetensors",
+    "bytes": 1051216,
+    "sha256": "65a80313464377cc49965984871aa70c511c08f724d7fa89c50aca7814357092",
+    "prefix": "c0.q4.flavor_best"
+  },
+  "factory_only": [
+    "full_source_model_shards",
+    "streaming_slice_readers",
+    "calibration_windows",
+    "theomatica_prior_search",
+    "tph_router_search",
+    "turboquant_training_and_fit_experiments",
+    "random_and_default_controls",
+    "held_out_metrics",
+    "pretraining_or_quantization_aware_training_experiments",
+    "large_intermediates_and_failed_candidates"
+  ],
+  "runner_claims_allowed_now": [
+    "validate one q4 shardlet package",
+    "decode one q4 shardlet through the Python HTTP bridge route",
+    "map decoded f32 bytes into a GGML-style tensor descriptor",
+    "decode one q4 shardlet through the native C http_bridge path",
+    "materialize decoded f32 bytes into a real GGML F32 tensor",
+    "audit live bridge state and memory cleanup"
+  ],
+  "runner_claims_not_allowed_yet": [
+    "full Mistral inference",
+    "native GGUF/GGML quant type",
+    "compression superiority over market baselines",
+    "training-time quantization benefit"
+  ],
+  "expansion_order": [
+    "single_shardlet_more_rows",
+    "same_tensor_family_many_shardlets",
+    "additional_mistral_tensor_families",
+    "head_dim_192_attention_and_kv_tests",
+    "full_layer_package",
+    "full_model_package_catalog",
+    "adjacent_mistral_like_models",
+    "factory_only_quantization_aware_training_branch"
+  ]
+}

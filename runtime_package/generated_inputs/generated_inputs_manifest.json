@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "vector_dim": 128,
+  "mse_bits": 3,
+  "qjl_seed": 1042,
+  "centroids": {
+    "path": "runtime_package/generated_inputs/centroids_d128_b3.raw",
+    "bytes": 32,
+    "sha256": "67b1b9c205700b78b4bd2683ae7aae8b22498f6c3977c1e00506bc3ecef6aff6",
+    "shape": [
+      8
+    ],
+    "dtype": "float32"
+  },
+  "qjl_matrix": {
+    "path": "runtime_package/generated_inputs/qjl_matrix_d128_seed1042.raw",
+    "bytes": 65536,
+    "sha256": "3b24cd980837306d050371917000143d9db8d2bb1c149ccbbaa3886c9ae01c1d",
+    "shape": [
+      128,
+      128
+    ],
+    "dtype": "float32"
+  }
+}

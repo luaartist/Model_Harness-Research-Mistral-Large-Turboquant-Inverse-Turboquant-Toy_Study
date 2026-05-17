@@ -1,0 +1,95 @@
+{
+  "claim_boundary": "This proves package decode correctness for one real q4 shardlet. It does not yet prove full Mistral inference, native GGML loading, or compression superiority over market baselines.",
+  "hashes": [
+    {
+      "bytes": 1051216,
+      "external": true,
+      "label": "artifact",
+      "path": "artifacts/prior_shootout_q4_shardlet.safetensors",
+      "sha256": "65a80313464377cc49965984871aa70c511c08f724d7fa89c50aca7814357092"
+    },
+    {
+      "bytes": 1358,
+      "label": "kernel",
+      "path": "runtime_package/turboquant_inverse_q4.opencl",
+      "sha256": "0b501cc330b45ced94ba5207aec89b16714149c31d7628c73b5348b9b83fa095"
+    },
+    {
+      "bytes": 4595,
+      "label": "manifest",
+      "path": "runtime_package/runtime_package_manifest.json",
+      "sha256": "2968a0c659bc66e48cad98a6d5eb805cfda13c64b776a5e2c8111ee67a730d7b"
+    },
+    {
+      "bytes": 32,
+      "label": "native_centroids",
+      "path": "runtime_package/generated_inputs/centroids_d128_b3.raw",
+      "sha256": "67b1b9c205700b78b4bd2683ae7aae8b22498f6c3977c1e00506bc3ecef6aff6"
+    },
+    {
+      "bytes": 65536,
+      "label": "native_qjl_matrix",
+      "path": "runtime_package/generated_inputs/qjl_matrix_d128_seed1042.raw",
+      "sha256": "3b24cd980837306d050371917000143d9db8d2bb1c149ccbbaa3886c9ae01c1d"
+    },
+    {
+      "bytes": 595,
+      "label": "generated_inputs_manifest",
+      "path": "runtime_package/generated_inputs/generated_inputs_manifest.json",
+      "sha256": "e4a3bd6bdededec549d517141701e2bfc1883b78573562c30455fb0cde5fc279"
+    },
+    {
+      "bytes": 2405,
+      "label": "packaging_boundary",
+      "path": "runtime_package/PACKAGING_BOUNDARY.json",
+      "sha256": "37342077f4a2ab121552cb1c83e311ddf920c5bfcadcf1f2b62a311309d34d5b"
+    },
+    {
+      "bytes": 1958,
+      "label": "model_profile_template",
+      "path": "runtime_package/MODEL_PROFILE_TEMPLATE.json",
+      "sha256": "c300a0a488ac06a1f7f70453d68bbfa71a86b91ee6894abe58a998cedf11fd64"
+    },
+    {
+      "bytes": 2383,
+      "label": "release_notes",
+      "path": "runtime_package/RELEASE_NOTES.md",
+      "sha256": "704fec8f34b8f822498bb26e08f81ff4dff7fc7c69a7fcc68c9f85073b465472"
+    },
+    {
+      "bytes": 9723,
+      "label": "runner_readme",
+      "path": "runtime_package/RUNNER_README.md",
+      "sha256": "532c33a877b466b88381068d1703ed4090f43cd2bdbdcf419742599f76ccaa1c"
+    },
+    {
+      "bytes": 3678,
+      "label": "package_boundary",
+      "path": "runtime_package/PACKAGE_BOUNDARY.md",
+      "sha256": "3142479b4dbe92aa31be3e5c5ece7a533eb254ac2687a7f4799574e34b96c132"
+    },
+    {
+      "bytes": 25964,
+      "label": "package_catalog",
+      "path": "runtime_package/package_catalog.json",
+      "sha256": "abceec857b19e62740459f50349f48ae9e589b5fc3e5ee4ab234a1e13c3e1edb"
+    }
+  ],
+  "implemented_backends": {
+    "decoded_f32_file": "maps predecoded sidecar output",
+    "ggml_loader_surface": "materializes decoded output into a real ggml_tensor",
+    "http_bridge": "native C decode through the HIP/OpenCL HTTP bridge"
+  },
+  "out_of_scope": {
+    "full_model_inference": "not part of v0.3-ggml-loader-surface",
+    "native_gguf_quant_type": "not part of v0.3-ggml-loader-surface"
+  },
+  "package": "mistral_large_tq_runtime_bridge_v0",
+  "prefix": "c0.q4.flavor_best",
+  "release_tag": "v0.3-ggml-loader-surface",
+  "reserved_backends": {
+    "inprocess_opencl_backend": "reserved, not implemented"
+  },
+  "schema_version": 1,
+  "verify_command": "python release_lock.py --check"
+}

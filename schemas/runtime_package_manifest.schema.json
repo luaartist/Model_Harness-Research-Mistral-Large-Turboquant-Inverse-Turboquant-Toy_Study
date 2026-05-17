@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Model Harness Runtime Package Manifest",
+  "type": "object",
+  "required": ["schema_version", "package", "artifact", "prefix", "kernel", "tensors", "generated_inputs", "runner_contract", "claim_boundary"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "package": {"type": "string"},
+    "purpose": {"type": "string"},
+    "artifact": {"$ref": "#/$defs/file_ref"},
+    "prefix": {"type": "string"},
+    "kernel": {
+      "allOf": [{"$ref": "#/$defs/file_ref"}],
+      "properties": {
+        "function": {"type": "string"},
+        "language": {"type": "string"}
+      },
+      "required": ["path", "bytes", "sha256", "function"]
+    },
+    "tensors": {"type": "object"},
+    "generated_inputs": {"type": "object"},
+    "runner_contract": {"type": "object"},
+    "claim_boundary": {"type": "string"}
+  },
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "uri": {"type": "string"},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

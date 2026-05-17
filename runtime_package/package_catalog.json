@@ -1,0 +1,708 @@
+{
+  "schema_version": 1,
+  "catalog_name": "mistral_large_q4_shardlet_catalog_v1",
+  "vector_dim": 128,
+  "key_bits": 4,
+  "kernel": "runtime_package/turboquant_inverse_q4.opencl",
+  "total_candidates": 10,
+  "promoted_count": 4,
+  "rejected_count": 6,
+  "promoted": [
+    {
+      "prefix": "s2.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wo.weight",
+      "source_family": "attention_wo",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        7168,
+        16384
+      ],
+      "rows": 256,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.gate.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s2.safetensors",
+      "artifact_bytes": 54912,
+      "artifact_sha256": "25eb2ff4467979a4c2a2a8dcae8ee5dd9ba9f317cd5ce25d76849eb48724310b",
+      "byte_accounting": {
+        "payload_bytes": 21504,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 65536,
+        "source_total_bytes": 54272,
+        "runtime_upload_bytes": 152608,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.2075471698113207,
+        "runtime_upload_ratio": 0.42944013420004196
+      },
+      "production_bytes": {
+        "payload_bytes": 602112,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 1835008,
+        "source_total_bytes": 634880,
+        "runtime_upload_bytes": 733216,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.890322580645161,
+        "runtime_upload_ratio": 2.5026840658141665
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.22798390289749937,
+        "heldout_mse": 199.07565307617188,
+        "heldout_cosine": 0.9750824100802004,
+        "gram_error": 0.13119984015735833,
+        "query_score_error": 0.08349601133045528,
+        "spectral_error": 0.13145558023781687,
+        "covariance_error": 0.08099248585003836,
+        "effective_rank": 37.2972771838357,
+        "anisotropy": 21.70740509033203,
+        "calibration_relative_error": 0.23055248621672308,
+        "generalization_ratio": 0.9888590083699674
+      },
+      "control_default": {
+        "heldout_relative_error": 0.22699469061139213,
+        "query_score_error": 0.08351087586438652,
+        "gram_error": 0.13147621197509404
+      },
+      "control_random": {
+        "heldout_relative_error": 0.23190906551866436,
+        "query_score_error": 0.08947191529074357,
+        "gram_error": 0.1391427636396893
+      },
+      "promoted": true,
+      "rejection_reasons": []
+    },
+    {
+      "prefix": "s3.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wq_a.weight",
+      "source_family": "attention_wq_a",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        1536,
+        7168
+      ],
+      "rows": 256,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.mixer.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s3.safetensors",
+      "artifact_bytes": 54912,
+      "artifact_sha256": "eb766fc626881c6c6f0010d9f5e3764ca9e1961e0810ad09f12ab0b75da3db6f",
+      "byte_accounting": {
+        "payload_bytes": 21504,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 65536,
+        "source_total_bytes": 54272,
+        "runtime_upload_bytes": 152608,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.2075471698113207,
+        "runtime_upload_ratio": 0.42944013420004196
+      },
+      "production_bytes": {
+        "payload_bytes": 129024,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 393216,
+        "source_total_bytes": 161792,
+        "runtime_upload_bytes": 260128,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.430379746835443,
+        "runtime_upload_ratio": 1.5116250461311354
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.22994917065871795,
+        "heldout_mse": 2.7434186904429225e-06,
+        "heldout_cosine": 0.9745595200798516,
+        "gram_error": 0.19438376867403448,
+        "query_score_error": 0.12429683635697601,
+        "spectral_error": 0.2349673165738056,
+        "covariance_error": 0.14438914434535866,
+        "effective_rank": 57.58135482773905,
+        "anisotropy": 8.205472946166992,
+        "calibration_relative_error": 0.22699900250102023,
+        "generalization_ratio": 1.012996392606106
+      },
+      "control_default": {
+        "heldout_relative_error": 0.22827549875993997,
+        "query_score_error": 0.12781147058632408,
+        "gram_error": 0.19495144487015373
+      },
+      "control_random": {
+        "heldout_relative_error": 0.2288194164134083,
+        "query_score_error": 0.12552282608923113,
+        "gram_error": 0.19784967558581038
+      },
+      "promoted": true,
+      "rejection_reasons": []
+    },
+    {
+      "prefix": "s6.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wo.weight",
+      "source_family": "attention_wo",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        7168,
+        16384
+      ],
+      "rows": 1024,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.gate.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s6.safetensors",
+      "artifact_bytes": 119432,
+      "artifact_sha256": "f45e987956a871bae216a2af4692a00a7faa94602fe0083a13ee0d4b38621086",
+      "byte_accounting": {
+        "payload_bytes": 86016,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 262144,
+        "source_total_bytes": 118784,
+        "runtime_upload_bytes": 217120,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.206896551724138,
+        "runtime_upload_ratio": 1.2073691967575535
+      },
+      "production_bytes": {
+        "payload_bytes": 602112,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 1835008,
+        "source_total_bytes": 634880,
+        "runtime_upload_bytes": 733216,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.890322580645161,
+        "runtime_upload_ratio": 2.5026840658141665
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.22986762015947518,
+        "heldout_mse": 239.16249084472656,
+        "heldout_cosine": 0.9746262051341155,
+        "gram_error": 0.13140801098618998,
+        "query_score_error": 0.08303714881958313,
+        "spectral_error": 0.1256072201667729,
+        "covariance_error": 0.057384804336489716,
+        "effective_rank": 39.90338710932361,
+        "anisotropy": 22.828428268432617,
+        "calibration_relative_error": 0.22905365602992933,
+        "generalization_ratio": 1.0035535958851471
+      },
+      "control_default": {
+        "heldout_relative_error": 0.22998465372778176,
+        "query_score_error": 0.08426777475865077,
+        "gram_error": 0.13204007220628222
+      },
+      "control_random": {
+        "heldout_relative_error": 0.23231876977071445,
+        "query_score_error": 0.08748599460903614,
+        "gram_error": 0.13905958676714153
+      },
+      "promoted": true,
+      "rejection_reasons": []
+    },
+    {
+      "prefix": "s9.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wo.weight",
+      "source_family": "attention_wo",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        7168,
+        16384
+      ],
+      "rows": 2048,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_1.gate.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s9.safetensors",
+      "artifact_bytes": 205448,
+      "artifact_sha256": "14179f389ec6802daddb8cfd1e4f67526daa25566a37c40f671636f7b0594c44",
+      "byte_accounting": {
+        "payload_bytes": 172032,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 524288,
+        "source_total_bytes": 204800,
+        "runtime_upload_bytes": 303136,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.56,
+        "runtime_upload_ratio": 1.7295471339596749
+      },
+      "production_bytes": {
+        "payload_bytes": 602112,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 1835008,
+        "source_total_bytes": 634880,
+        "runtime_upload_bytes": 733216,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.890322580645161,
+        "runtime_upload_ratio": 2.5026840658141665
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23087946775642168,
+        "heldout_mse": 248.39215087890625,
+        "heldout_cosine": 0.9743978254156056,
+        "gram_error": 0.13258619813778638,
+        "query_score_error": 0.08985270971790663,
+        "spectral_error": 0.12296695478873208,
+        "covariance_error": 0.05245366884388532,
+        "effective_rank": 40.41165111639051,
+        "anisotropy": 23.025188446044922,
+        "calibration_relative_error": 0.22948743338240507,
+        "generalization_ratio": 1.0060658413992412
+      },
+      "control_default": {
+        "heldout_relative_error": 0.23071186192710855,
+        "query_score_error": 0.08989138006646472,
+        "gram_error": 0.13330035465684592
+      },
+      "control_random": {
+        "heldout_relative_error": 0.23205743063965883,
+        "query_score_error": 0.09222774283239443,
+        "gram_error": 0.13702020421937253
+      },
+      "promoted": true,
+      "rejection_reasons": []
+    }
+  ],
+  "rejected": [
+    {
+      "prefix": "s0.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wkv_a_with_mqa.weight",
+      "source_family": "attention_wkv_a_with_mqa",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        576,
+        7168
+      ],
+      "rows": 256,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.mixer.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s0.safetensors",
+      "artifact_bytes": 54920,
+      "artifact_sha256": "2f83360214ece5033bf97ff27a11e2c89319949f8205cda2e32629e4c527c6da",
+      "byte_accounting": {
+        "payload_bytes": 21504,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 65536,
+        "source_total_bytes": 54272,
+        "runtime_upload_bytes": 152608,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.2075471698113207,
+        "runtime_upload_ratio": 0.42944013420004196
+      },
+      "production_bytes": {
+        "payload_bytes": 48384,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 147456,
+        "source_total_bytes": 81152,
+        "runtime_upload_bytes": 179488,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.8170347003154574,
+        "runtime_upload_ratio": 0.821536815831699
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23302498042295153,
+        "heldout_mse": 6.408426088455599e-06,
+        "heldout_cosine": 0.9739534199142601,
+        "gram_error": 0.2388344904717639,
+        "query_score_error": 0.1554264058112158,
+        "spectral_error": 0.2869727046973932,
+        "covariance_error": 0.2513776334159384,
+        "effective_rank": 75.51960706202973,
+        "anisotropy": 6.085106372833252,
+        "calibration_relative_error": 0.22945756462696928,
+        "generalization_ratio": 1.015547170134843
+      },
+      "control_default": {
+        "heldout_relative_error": 0.2311322899272676,
+        "query_score_error": 0.15356147176854354,
+        "gram_error": 0.23450611491982337
+      },
+      "control_random": {
+        "heldout_relative_error": 0.2282045224770219,
+        "query_score_error": 0.15730274427103264,
+        "gram_error": 0.2365732918893795
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.155426 > default 0.153561"
+      ]
+    },
+    {
+      "prefix": "s1.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wkv_b.weight",
+      "source_family": "attention_wkv_b",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        32768,
+        512
+      ],
+      "rows": 256,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_1.ff2.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s1.safetensors",
+      "artifact_bytes": 54912,
+      "artifact_sha256": "9c86f7e5f92abe5f53f6fdefc4312f19a219c6d7d8413f91b1ca2836b15467e5",
+      "byte_accounting": {
+        "payload_bytes": 21504,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 65536,
+        "source_total_bytes": 54272,
+        "runtime_upload_bytes": 152608,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.2075471698113207,
+        "runtime_upload_ratio": 0.42944013420004196
+      },
+      "production_bytes": {
+        "payload_bytes": 2752512,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 8388608,
+        "source_total_bytes": 2785280,
+        "runtime_upload_bytes": 2883616,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 3.011764705882353,
+        "runtime_upload_ratio": 2.9090586263913085
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23553647162818594,
+        "heldout_mse": 147.8917236328125,
+        "heldout_cosine": 0.9731567099397257,
+        "gram_error": 0.0881071891611565,
+        "query_score_error": 0.04454535425082228,
+        "spectral_error": 0.10576117013587873,
+        "covariance_error": 0.06882349749558801,
+        "effective_rank": 27.703895055440697,
+        "anisotropy": 42.58956527709961,
+        "calibration_relative_error": 0.22031304777071567,
+        "generalization_ratio": 1.0690990570531873
+      },
+      "control_default": {
+        "heldout_relative_error": 0.23072334098524752,
+        "query_score_error": 0.04464613275139638,
+        "gram_error": 0.08800484571502658
+      },
+      "control_random": {
+        "heldout_relative_error": 0.22637567276416606,
+        "query_score_error": 0.04167768896579857,
+        "gram_error": 0.0847908644496305
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.044545 > random 0.041678"
+      ]
+    },
+    {
+      "prefix": "s4.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wq_b.weight",
+      "source_family": "attention_wq_b",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        24576,
+        1536
+      ],
+      "rows": 256,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.gate.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s4.safetensors",
+      "artifact_bytes": 54912,
+      "artifact_sha256": "d2278edf48739a590455300f624b8008523cd30e85f6148fcc44f0722e07a73a",
+      "byte_accounting": {
+        "payload_bytes": 21504,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 65536,
+        "source_total_bytes": 54272,
+        "runtime_upload_bytes": 152608,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 1.2075471698113207,
+        "runtime_upload_ratio": 0.42944013420004196
+      },
+      "production_bytes": {
+        "payload_bytes": 2064384,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 6291456,
+        "source_total_bytes": 2097152,
+        "runtime_upload_bytes": 2195488,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 3.0,
+        "runtime_upload_ratio": 2.865629873631739
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.22414978948338915,
+        "heldout_mse": 87.32980346679688,
+        "heldout_cosine": 0.9757785168508256,
+        "gram_error": 0.1217319995251445,
+        "query_score_error": 0.08365795690835222,
+        "spectral_error": 0.15173583632558296,
+        "covariance_error": 0.08025108229859555,
+        "effective_rank": 29.06093345308784,
+        "anisotropy": 20.98780059814453,
+        "calibration_relative_error": 0.23383963531890203,
+        "generalization_ratio": 0.9585620041602518
+      },
+      "control_default": {
+        "heldout_relative_error": 0.23143877549369907,
+        "query_score_error": 0.0834804878867622,
+        "gram_error": 0.12514965899844477
+      },
+      "control_random": {
+        "heldout_relative_error": 0.2273537989230737,
+        "query_score_error": 0.08566046149212506,
+        "gram_error": 0.1299004745669776
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.083658 > default 0.083480"
+      ]
+    },
+    {
+      "prefix": "s5.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wkv_b.weight",
+      "source_family": "attention_wkv_b",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        32768,
+        512
+      ],
+      "rows": 1024,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_1.mixer.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s5.safetensors",
+      "artifact_bytes": 119432,
+      "artifact_sha256": "b6d6c9e29b1773cc47246bbc3278aaf67696aeef35fb0220b2c509d8d5f86b85",
+      "byte_accounting": {
+        "payload_bytes": 86016,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 262144,
+        "source_total_bytes": 118784,
+        "runtime_upload_bytes": 217120,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.206896551724138,
+        "runtime_upload_ratio": 1.2073691967575535
+      },
+      "production_bytes": {
+        "payload_bytes": 2752512,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 8388608,
+        "source_total_bytes": 2785280,
+        "runtime_upload_bytes": 2883616,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 3.011764705882353,
+        "runtime_upload_ratio": 2.9090586263913085
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23726144442734182,
+        "heldout_mse": 151.46682739257812,
+        "heldout_cosine": 0.9728764765918806,
+        "gram_error": 0.08993005537869744,
+        "query_score_error": 0.0659535532109899,
+        "spectral_error": 0.158600537179418,
+        "covariance_error": 0.1473832399215971,
+        "effective_rank": 20.938323787159,
+        "anisotropy": 34.777099609375,
+        "calibration_relative_error": 0.2286656555858903,
+        "generalization_ratio": 1.0375910795148806
+      },
+      "control_default": {
+        "heldout_relative_error": 0.22528010454324213,
+        "query_score_error": 0.0643085829462676,
+        "gram_error": 0.09112741245523279
+      },
+      "control_random": {
+        "heldout_relative_error": 0.2189084737019457,
+        "query_score_error": 0.07410432179809304,
+        "gram_error": 0.08882761307865765
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.065954 > default 0.064309"
+      ]
+    },
+    {
+      "prefix": "s7.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wq_b.weight",
+      "source_family": "attention_wq_b",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        24576,
+        1536
+      ],
+      "rows": 1024,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.ff1.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s7.safetensors",
+      "artifact_bytes": 119432,
+      "artifact_sha256": "da4914ef28798f7c4cd118e1cc624585ba8f81c05f3bf353d86ba4cf5d95cf17",
+      "byte_accounting": {
+        "payload_bytes": 86016,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 262144,
+        "source_total_bytes": 118784,
+        "runtime_upload_bytes": 217120,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.206896551724138,
+        "runtime_upload_ratio": 1.2073691967575535
+      },
+      "production_bytes": {
+        "payload_bytes": 2064384,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 6291456,
+        "source_total_bytes": 2097152,
+        "runtime_upload_bytes": 2195488,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 3.0,
+        "runtime_upload_ratio": 2.865629873631739
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23398931496077247,
+        "heldout_mse": 184.8694610595703,
+        "heldout_cosine": 0.973781964560016,
+        "gram_error": 0.1243539004826665,
+        "query_score_error": 0.12849736793738767,
+        "spectral_error": 0.12830385903969363,
+        "covariance_error": 0.09327422628469301,
+        "effective_rank": 34.47136385926401,
+        "anisotropy": 23.364662170410156,
+        "calibration_relative_error": 0.22770301704201162,
+        "generalization_ratio": 1.027607442362527
+      },
+      "control_default": {
+        "heldout_relative_error": 0.23102771899154545,
+        "query_score_error": 0.13396180716720285,
+        "gram_error": 0.12575697405055242
+      },
+      "control_random": {
+        "heldout_relative_error": 0.2274031938138367,
+        "query_score_error": 0.11678851647258663,
+        "gram_error": 0.12101821876757708
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.128497 > random 0.116789"
+      ]
+    },
+    {
+      "prefix": "s8.q4.flavor_best",
+      "source_tensor": "layers.0.attention.wkv_b.weight",
+      "source_family": "attention_wkv_b",
+      "source_shard": "consolidated-00001-of-00272.safetensors",
+      "source_shape": [
+        32768,
+        512
+      ],
+      "rows": 2048,
+      "vector_dim": 128,
+      "key_bits": 4,
+      "flavor_basis": "flavor:layer_0.mixer.weight",
+      "artifact_path": "artifacts/catalog/catalog_shardlet_s8.safetensors",
+      "artifact_bytes": 205448,
+      "artifact_sha256": "d9abc6394b2044a56f1c5e4c1c0d3d13b71b4be424a90fad21371a8f530a90c9",
+      "byte_accounting": {
+        "payload_bytes": 172032,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 524288,
+        "source_total_bytes": 204800,
+        "runtime_upload_bytes": 303136,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 2.56,
+        "runtime_upload_ratio": 1.7295471339596749
+      },
+      "production_bytes": {
+        "payload_bytes": 2752512,
+        "source_pi_bytes": 32768,
+        "runtime_pi_bytes": 65536,
+        "runtime_qjl_matrix_bytes": 65536,
+        "centroid_bytes": 32,
+        "baseline_bf16_bytes": 8388608,
+        "source_total_bytes": 2785280,
+        "runtime_upload_bytes": 2883616,
+        "payload_only_ratio": 3.0476190476190474,
+        "source_ratio": 3.011764705882353,
+        "runtime_upload_ratio": 2.9090586263913085
+      },
+      "gate_metrics": {
+        "heldout_relative_error": 0.23318469837742323,
+        "heldout_mse": 145.5802459716797,
+        "heldout_cosine": 0.97389565915117,
+        "gram_error": 0.1373868758844457,
+        "query_score_error": 0.06711147565521478,
+        "spectral_error": 0.1520697251100629,
+        "covariance_error": 0.13002875047751744,
+        "effective_rank": 41.278987917199125,
+        "anisotropy": 20.616073608398438,
+        "calibration_relative_error": 0.22953563549430187,
+        "generalization_ratio": 1.015897587645871
+      },
+      "control_default": {
+        "heldout_relative_error": 0.22903682027209463,
+        "query_score_error": 0.06392997921775496,
+        "gram_error": 0.13227877455895867
+      },
+      "control_random": {
+        "heldout_relative_error": 0.22141755548320774,
+        "query_score_error": 0.06729004012621798,
+        "gram_error": 0.12843442609944808
+      },
+      "promoted": false,
+      "rejection_reasons": [
+        "flavor_best query_score_error 0.067111 > default 0.063930"
+      ]
+    }
+  ],
+  "gate_spec": "SCALING_MATH_GATES.md",
+  "wolfram_checks": "audits/scaling_math_gate_checks.json"
+}
